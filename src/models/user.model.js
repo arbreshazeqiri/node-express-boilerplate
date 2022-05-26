@@ -7,7 +7,12 @@ const { countryTypes } = require('../config/countries');
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    fullname: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    username: {
       type: String,
       required: true,
       trim: true,
