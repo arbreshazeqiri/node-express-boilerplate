@@ -56,6 +56,10 @@ const userSchema = mongoose.Schema(
       enum: [countryTypes.KOSOVO, countryTypes.ALBANIA],
       required: true
     },
+    products: {
+      type: Object,
+      default: null,
+    }
   },
   {
     timestamps: true,
