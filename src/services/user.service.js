@@ -12,8 +12,7 @@ const createUser = async (userBody) => {
     throw new ApiError(409, 'Email already taken');
   }
   if (await User.isUsernameTaken(userBody.username)){
-    throw new ApiError(httpStatus.NOT_ACCEPTABLE, 'Username already taken');
-
+    throw new ApiError(410, 'Username already taken');
   }
   return User.create(userBody);
 };
@@ -49,6 +48,17 @@ const getUserById = async (id) => {
 const getUserByEmail = async (email) => {
   return User.findOne({ email });
 };
+
+
+/**
+ * Get user by username
+ * @param {string} username
+ * @returns {Promise<User>}
+ */
+const getUserByUsername = async (username) => {
+  return User.findOne({username});
+};
+
 
 /**
  * Update user by id
@@ -91,6 +101,7 @@ module.exports = {
   queryUsers,
   getUserById,
   getUserByEmail,
+  getUserByUsername,
   updateUserById,
   deleteUserById,
 };

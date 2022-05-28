@@ -57,8 +57,10 @@ const userSchema = mongoose.Schema(
       required: true
     },
     products: {
-      type: Object,
-      default: null,
+      type: String,
+      default: 'none',
+      required: true,
+      trim: true,
     }
   },
   {
