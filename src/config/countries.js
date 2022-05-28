@@ -1,6 +1,6 @@
 const countryTypes = {
-    KOSOVO: 'kosovo',
-    ALBANIA: 'albania'
+    KOSOVO: 'Kosovo',
+    ALBANIA: 'Albania'
   };
   
   module.exports = {

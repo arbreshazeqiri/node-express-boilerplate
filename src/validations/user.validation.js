@@ -8,7 +8,7 @@ const createUser = {
     username: Joi.string().required(),
     fullname: Joi.string().required(),
     role: Joi.string().required().valid('user', 'admin'),
-    country: Joi.string().required().valid('kosovo', 'albania'),
+    country: Joi.string().required().valid('Kosovo', 'Albania'),
   }),
 };
 
