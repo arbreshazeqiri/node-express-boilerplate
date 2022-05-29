@@ -51,7 +51,6 @@ module.exports = {
   register,
   login,
   logout,
-  createProduct,
   refreshTokens,
   forgotPassword,
   resetPassword,
