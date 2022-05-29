@@ -16,6 +16,16 @@ const getUsers = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const addProductToWishlistForUser = catchAsync(async (req,res)=>{
+
+  const user = await userService.addProductToWishlist(req.params.productId,req.params.userId);
+  if(!user){
+    throw new ApiError(httpStatus.BAD_REQUEST,"Product could not be added to wishlist");
+  }
+  res.status(httpStatus.OK).send(user);
+  });
+
+
 const getUser = catchAsync(async (req, res) => {
   const user = await userService.getUserByUsername(req.params.username);
   if (!user) {
@@ -23,6 +33,7 @@ const getUser = catchAsync(async (req, res) => {
   }
   res.send(user);
 });
+
 
 const updateUser = catchAsync(async (req, res) => {
   const user = await userService.updateUserById(req.params.userId, req.body);
@@ -40,4 +51,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  addProductToWishlistForUser
 };

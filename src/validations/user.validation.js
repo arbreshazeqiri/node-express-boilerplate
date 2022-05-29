@@ -58,10 +58,30 @@ const deleteUser = {
   }),
 };
 
+const addWishlistForUser = {
+  params: Joi.object().keys({
+    userId: Joi.string(),
+    productId: Joi.string(),
+
+  }),
+  query: Joi.object().keys({
+    username: Joi.string(),
+    fullname: Joi.string(),
+    country: Joi.string(),
+    role: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    //TODO: fix validation
+    wishlist:  Joi.array().items(),
+    page: Joi.number().integer(),
+  }),
+};
+
 module.exports = {
   createUser,
   getUsers,
   getUser,
   updateUser,
   deleteUser,
+  addWishlistForUser
 };

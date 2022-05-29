@@ -60,6 +60,7 @@ const verifyToken = async (token, type) => {
   return tokenDoc;
 };
 
+
 /**
  * Generate auth tokens
  * @param {User} user
@@ -112,6 +113,8 @@ const generateVerifyEmailToken = async (user) => {
   await saveToken(verifyEmailToken, user.id, expires, tokenTypes.VERIFY_EMAIL);
   return verifyEmailToken;
 };
+
+
 
 module.exports = {
   generateToken,

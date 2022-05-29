@@ -56,13 +56,11 @@ const userSchema = mongoose.Schema(
       enum: [countryTypes.KOSOVO, countryTypes.ALBANIA],
       required: true
     },
-    products: {
-      type: [String],
-      default: ["a", "b"],
+    wishlist: {
+      type: [ mongoose.Types.ObjectId],
     },
-    products2: {
-      type: [String],
-      default: ["c" , "d"],
+    cart: {
+      type: [ mongoose.Types.ObjectId],
     }
   },
   {

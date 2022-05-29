@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const { Product } = require('../models');
+const {userService} = require('./user.service');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -42,6 +43,8 @@ const getProductById = async (id) => {
  const getProductByImage = async (image) => {
   return Product.findOne({image});
 };
+
+
 
 
 /**

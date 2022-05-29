@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
-const { User } = require('../models');
+const { User, Product } = require('../models');
 const ApiError = require('../utils/ApiError');
+
 
 /**
  * Create a user
@@ -82,6 +83,8 @@ const updateUserById = async (userId, updateBody) => {
   return user;
 };
 
+
+
 /**
  * Delete user by id
  * @param {ObjectId} userId
@@ -96,6 +99,20 @@ const deleteUserById = async (userId) => {
   return user;
 };
 
+
+/**
+ * Adds product to wishlist
+ * @param {ObjectId} productId
+ * @param {ObjectId} userId
+ * @returns {Promise<Product>}
+ */
+ const addProductToWishlist = async (productId,userId)  =>{
+  const user  = await User.findById(userId);
+  const product = await Product.findById(productId);
+  user.wishlist.push(product);
+  return await user.save(user);
+}
+
 module.exports = {
   createUser,
   queryUsers,
@@ -104,4 +121,5 @@ module.exports = {
   getUserByUsername,
   updateUserById,
   deleteUserById,
+  addProductToWishlist
 };
