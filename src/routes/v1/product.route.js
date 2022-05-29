@@ -1,21 +1,21 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const ProductValidation = require('../../validations/product.validation');
-const ProductController = require('../../controllers/product.controller');
+const productValidation = require('../../validations/product.validation');
+const productController = require('../../controllers/product.controller');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageProducts'), validate(ProductValidation.createProduct), ProductController.createProduct)
-  .get(auth('getProducts'), validate(ProductValidation.getProducts), ProductController.getProducts);
+  .post(auth('manageProducts'), validate(productValidation.createProduct), productController.createProduct)
+  .get(auth('getProducts'), validate(productValidation.getProducts), productController.getProducts);
 
 router
-  .route('/:ProductId')
-  .get(auth('getProducts'), validate(ProductValidation.getProduct), ProductController.getProduct)
-  .patch(auth('manageProducts'), validate(ProductValidation.updateProduct), ProductController.updateProduct)
-  .delete(auth('manageProducts'), validate(ProductValidation.deleteProduct), ProductController.deleteProduct);
+  .route('/:image')
+  .get(auth('getProducts'), validate(productValidation.getProduct), productController.getProduct)
+  .patch(auth('manageProducts'), validate(productValidation.updateProduct), productController.updateProduct)
+  .delete(auth('manageProducts'), validate(productValidation.deleteProduct), productController.deleteProduct);
 
 module.exports = router;
 

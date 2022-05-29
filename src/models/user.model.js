@@ -57,8 +57,12 @@ const userSchema = mongoose.Schema(
       required: true
     },
     products: {
-      type: Object,
-      default: null,
+      type: [String],
+      default: ["a", "b"],
+    },
+    products2: {
+      type: [String],
+      default: ["c" , "d"],
     }
   },
   {

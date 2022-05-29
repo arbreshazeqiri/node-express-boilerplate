@@ -1,5 +1,4 @@
 const httpStatus = require('http-status');
-const { getProducts } = require('../controllers/product.controller');
 const { Product } = require('../models');
 const ApiError = require('../utils/ApiError');
 
@@ -38,32 +37,32 @@ const getProductById = async (id) => {
 
 /**
  * Update Product by id
- * @param {ObjectId} ProductId
+ * @param {ObjectId} productId
  * @param {Object} updateBody
  * @returns {Promise<Product>}
  */
-const updateProductById = async (ProductId, updateBody) => {
-  const Product = await getProductById(ProductId);
-  if (!Product) {
+const updateProductById = async (productId, updateBody) => {
+  const product = await getProductById(productId);
+  if (!product) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found');
   }
-  Object.assign(Product, updateBody);
-  await Product.save();
-  return Product;
+  Object.assign(product, updateBody);
+  await product.save();
+  return product;
 };
 
 /**
  * Delete Product by id
- * @param {ObjectId} ProductId
+ * @param {ObjectId} productId
  * @returns {Promise<Product>}
  */
-const deleteProductById = async (ProductId) => {
-  const Product = await getProductById(ProductId);
-  if (!Product) {
+const deleteProductById = async (productId) => {
+  const product = await getProductById(productId);
+  if (!product) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found');
   }
-  await Product.remove();
-  return Product;
+  await product.remove();
+  return product;
 };
 
 module.exports = {

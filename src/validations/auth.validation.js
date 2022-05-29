@@ -11,6 +11,16 @@ const register = {
   }),
 };
 
+const createProduct = {
+  body: Joi.object().keys({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    image: Joi.string().required(),
+    price: Joi.string().required(),
+    quantity: Joi.string().required(),
+  }),
+};
+
 const login = {
   body: Joi.object().keys({
     username: Joi.string().required(),
@@ -55,6 +65,7 @@ module.exports = {
   register,
   login,
   logout,
+  createProduct,
   refreshTokens,
   forgotPassword,
   resetPassword,
