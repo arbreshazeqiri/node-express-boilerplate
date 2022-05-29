@@ -15,11 +15,6 @@ const login = catchAsync(async (req, res) => {
   res.send({ user, tokens });
 });
 
-const createProduct = catchAsync(async (req, res) => {
-  const product = await productService.createProduct(req.body);
-  res.status(httpStatus.CREATED).send(product);
-});
-
 const logout = catchAsync(async (req, res) => {
   await authService.logout(req.body.refreshToken);
   res.status(httpStatus.NO_CONTENT).send();
