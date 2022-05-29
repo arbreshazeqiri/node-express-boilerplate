@@ -34,6 +34,15 @@ const getProductById = async (id) => {
   return Product.findById(id);
 };
 
+/**
+ * Get Product by image
+ * @param {string} image
+ * @returns {Promise<Product>}
+ */
+ const getProductByImage = async (image) => {
+  return Product.findOne({image});
+};
+
 
 /**
  * Update Product by id
@@ -69,6 +78,7 @@ module.exports = {
   createProduct,
   queryProducts,
   getProductById,
+  getProductByImage,
   updateProductById,
   deleteProductById,
 };

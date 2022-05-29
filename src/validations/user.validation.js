@@ -15,8 +15,8 @@ const createUser = {
 const getUsers = {
   query: Joi.object().keys({
     username: Joi.string(),
-    fullname: Joi.string().required(),
-    country: Joi.string().required().valid('Kosovo', 'Albania'),
+    fullname: Joi.string(),
+    country: Joi.string(),
     role: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
