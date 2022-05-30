@@ -22,6 +22,9 @@ const addProductToWishlistForUser = catchAsync(async (req,res)=>{
   if(!user){
     throw new ApiError(httpStatus.BAD_REQUEST,"Product could not be added to wishlist");
   }
+  if(user == "Product could not be added to wishlist"){
+    throw new ApiError(httpStatus.BAD_REQUEST,"Product is already in wishlist");
+  }
   res.status(httpStatus.OK).send(user);
   });
 

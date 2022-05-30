@@ -109,8 +109,13 @@ const deleteUserById = async (userId) => {
  const addProductToWishlist = async (productId,userId)  =>{
   const user  = await User.findById(userId);
   const product = await Product.findById(productId);
-  user.wishlist.push(product);
-  return await user.save(user);
+  if(user.wishlist.includes(productId)!== true){
+    user.wishlist.push(product);
+    return await user.save(user);
+  }
+  else {
+    return "Product is already in wishlist."
+  }
 }
 
 module.exports = {
