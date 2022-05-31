@@ -27,9 +27,19 @@ const addProductToWishlistForUser = catchAsync(async (req,res)=>{
   }
   });
 
+  const addProductToCartForUser = catchAsync(async (req,res)=>{
+    const user = await userService.addProductToCart(req.params.productId,req.params.userId);
+    if(user == "Product added to cart"){
+      res.status(httpStatus.CREATED).send(user);
+    }
+    else {
+      res.status(httpStatus.OK).send(user);
+    }
+    });
+
 
 const getUser = catchAsync(async (req, res) => {
-  const user = await userService.getUserByUsername(req.params.username);
+  const user = await userService.getUserById(req.params.userId);
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
@@ -53,5 +63,6 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-  addProductToWishlistForUser
+  addProductToWishlistForUser,
+  addProductToCartForUser
 };

@@ -20,8 +20,10 @@ router
 router
 .route("/:userId/products/:productId/wishlist")
 .put(auth('manageProducts'),userController.addProductToWishlistForUser);
-// .delete(auth('manageProducts'), validate(userValidation.deleteUser), userController.deleteUser);
 
+router
+.route("/:userId/products/:productId/cart")
+.put(auth('manageProducts'),userController.addProductToCartForUser);
 
 module.exports = router;
 

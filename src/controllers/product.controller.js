@@ -24,8 +24,6 @@ const getProduct = catchAsync(async (req, res) => {
   res.send(product);
 });
 
-
-
 const updateProduct = catchAsync(async (req, res) => {
   const product = await productService.updateProductById(req.params.productId, req.body);
   res.send(product);

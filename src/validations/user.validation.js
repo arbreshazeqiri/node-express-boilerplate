@@ -26,12 +26,14 @@ const getUsers = {
 
 const getUser = {
   params: Joi.object().keys({
-    username: Joi.string(),
+    userId: Joi.string(),
   }),
   query: Joi.object().keys({
     username: Joi.string(),
     fullname: Joi.string(),
     country: Joi.string(),
+    wishlist: Joi.array().items(),
+    cart: Joi.array().items(),
     role: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -71,8 +73,27 @@ const addWishlistForUser = {
     role: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
-    //TODO: fix validation
     wishlist:  Joi.array().items(),
+    cart: Joi.array().items(),
+    page: Joi.number().integer(),
+  }),
+};
+
+const addCartForUser = {
+  params: Joi.object().keys({
+    userId: Joi.string(),
+    productId: Joi.string(),
+
+  }),
+  query: Joi.object().keys({
+    username: Joi.string(),
+    fullname: Joi.string(),
+    country: Joi.string(),
+    role: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    wishlist:  Joi.array().items(),
+    cart: Joi.array().items(),
     page: Joi.number().integer(),
   }),
 };
@@ -83,5 +104,6 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-  addWishlistForUser
+  addWishlistForUser,
+  addCartForUser
 };

@@ -122,6 +122,28 @@ const deleteUserById = async (userId) => {
   }
 }
 
+/**
+ * Adds product to cart
+ * @param {ObjectId} productId
+ * @param {ObjectId} userId
+ * @returns {Promise<Product>}
+ */
+const addProductToCart = async (productId,userId)  =>{
+  const user  = await User.findById(userId);
+  const product = await Product.findById(productId);
+  
+  if(user.cart.includes(productId) !== true){
+    user.cart.push(product);
+    user.save(user);
+    return "Product added to cart";
+  }
+  else {
+    user.cart.pop(product);
+    user.save(user);
+    return "Product removed from cart";
+  }
+}
+
 module.exports = {
   createUser,
   queryUsers,
@@ -130,5 +152,6 @@ module.exports = {
   getUserByUsername,
   updateUserById,
   deleteUserById,
-  addProductToWishlist
+  addProductToWishlist,
+  addProductToCart
 };
