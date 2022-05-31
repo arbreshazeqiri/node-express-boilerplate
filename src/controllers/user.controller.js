@@ -19,13 +19,12 @@ const getUsers = catchAsync(async (req, res) => {
 const addProductToWishlistForUser = catchAsync(async (req,res)=>{
 
   const user = await userService.addProductToWishlist(req.params.productId,req.params.userId);
-  if(!user){
-    throw new ApiError(httpStatus.BAD_REQUEST,"Product could not be added to wishlist");
+  if(user == "Product added to wishlist"){
+    res.status(httpStatus.CREATED).send(user);
   }
-  if(user == "Product could not be added to wishlist"){
-    throw new ApiError(httpStatus.BAD_REQUEST,"Product is already in wishlist");
+  else {
+    res.status(httpStatus.OK).send(user);
   }
-  res.status(httpStatus.OK).send(user);
   });
 
 
