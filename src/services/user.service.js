@@ -116,7 +116,7 @@ const deleteUserById = async (userId) => {
     return "Product added to wishlist";
   }
   else {
-    user.wishlist.pop(product);
+    user.wishlist.remove(product);
     user.save(user);
     return "Product removed from wishlist";
   }
@@ -138,7 +138,7 @@ const addProductToCart = async (productId,userId)  =>{
     return "Product added to cart";
   }
   else {
-    user.cart.pop(product);
+    user.cart.remove(product);
     user.save(user);
     return "Product removed from cart";
   }
